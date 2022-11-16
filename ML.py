@@ -28,6 +28,7 @@ class predict_CO2_emission:
     self.Fuel_comb_L = Fuel_comb_L
     self.Fuel_Comb_mpg = Fuel_Comb_mpg
     self.Fuel_Type = Fuel_Type
+    self.finish = False
 
   def __str__(self):
     return f"Engine size : {self.Engine_size} , Cylinders : {self.Cylinders} , Fuel_comb_L : {self.Fuel_comb_L} , Fuel_comb_mpg : {self.Fuel_Comb_mpg} , Fuel_Type : {self.Fuel_Type}"
@@ -154,9 +155,11 @@ class predict_CO2_emission:
     n_estimators = grid_result_RF.best_params_['n_estimators'])
     RandomF.fit(X_train,Y_train)
     y_pred= RandomF.predict(df_use_predict)
-    return y_pred
+    self.finish = True
+    return (y_pred)
 
 #data_x = predict_CO2_emission(1.4,4,7.1,40,"Fuel Type_X")
-#print(data_x.predict())
+#j = data_x.predict()
+#print(j[0],j[1])
 
 
